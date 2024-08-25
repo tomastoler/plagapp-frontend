@@ -43,9 +43,9 @@ function RegisterForm() {
 			credentials: 'include'
 		})
 
-		setUser(await res.json())
-
 		reset()
+		const user = await res.json()
+		setUser(user.user)
 	}
 
 	return (

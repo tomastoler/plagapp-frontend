@@ -43,7 +43,7 @@ function LoginForm() {
 		reset()
 		
 		const user = await res.json()
-		setUser(user)
+		setUser(user.user)
 
 	}
 

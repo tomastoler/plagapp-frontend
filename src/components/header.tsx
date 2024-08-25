@@ -26,7 +26,10 @@ export default function Header() {
 				</>
 
 			) : (
-				<button className="text-gray-200 font-semibold text-lg py-2 px-4 rounded-md text-center bg-blue-500" onClick={onClick}>Logout</button>
+				<>
+					<h1 className="text-xl font-mono font-semibold">Hello, {user.name}!</h1>
+					<button className="text-gray-200 font-semibold text-lg py-2 px-4 rounded-md text-center bg-blue-500" onClick={onClick}>Logout</button>
+				</>
 			) }
 		</nav>
 	</header>;

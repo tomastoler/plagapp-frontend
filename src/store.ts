@@ -17,8 +17,8 @@ interface UserState {
 
 export const useUserStore = create<UserState>()((set) => ({
     user: null,
-    login: (user: User) => set(() => ({ user: user })),
-    logout: () => set(() => ({ user: null }))
+    login: (user: User) => set((state) => ({ ...state, user: user })),
+    logout: () => set((state) => ({ ...state, user: null }))
 }))
 
 
