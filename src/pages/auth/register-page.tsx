@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import AuthFormCard from "../../components/auth-form-card";
 import FormInput from "../../components/form-input";
 import Header from "../../components/header";
@@ -15,6 +16,8 @@ export default function RegisterPage() {
 }
 
 function RegisterForm() {
+
+	const nav = useNavigate()
 
 	const name = useRegisterStore(state => state.name)
 	const lastname = useRegisterStore(state => state.lastname)
@@ -46,6 +49,7 @@ function RegisterForm() {
 		reset()
 		const user = await res.json()
 		setUser(user.user)
+		nav('/admin')
 	}
 
 	return (

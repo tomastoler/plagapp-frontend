@@ -1,7 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import AuthFormCard from "../../components/auth-form-card";
 import FormInput from "../../components/form-input";
 import Header from "../../components/header";
-import { useRegisterStore, useUserStore } from "../../store";
+import { User, useRegisterStore, useUserStore } from "../../store";
 
 export default function LoginPage() {
 	return (
@@ -15,6 +16,8 @@ export default function LoginPage() {
 }
 
 function LoginForm() {
+
+	const nav = useNavigate()
 
 	const email = useRegisterStore(state => state.email)
 	const password = useRegisterStore(state => state.password)
@@ -42,8 +45,10 @@ function LoginForm() {
 
 		reset()
 		
-		const user = await res.json()
+		const user: { user: User } = await res.json()
 		setUser(user.user)
+
+		return user.user.role == 'ADMIN' ? nav('/admin') : nav('/')
 
 	}
 
